@@ -1,26 +1,52 @@
 {
   "compilerOptions": {
+    /* -------------------------------------------------- Target / Environment */
     "target": "ES2017",
-    "lib": ["dom", "dom.iterable", "esnext"],
+    "lib": [
+      "dom",
+      "dom.iterable",
+      "esnext"
+    ],
+    /* ------------------------------------------------ Core & Build Settings */
     "allowJs": true,
     "skipLibCheck": true,
     "strict": true,
     "noEmit": true,
-    "esModuleInterop": true,
+    "incremental": true,
+    /* ------------------------------------------------- Module Resolution */
     "module": "esnext",
     "moduleResolution": "bundler",
+    "esModuleInterop": true,
     "resolveJsonModule": true,
     "isolatedModules": true,
     "jsx": "preserve",
-    "incremental": true,
+    /* --------------------------------------------------- Explicit Ambient Types
+       Required when using `"moduleResolution": "bundler"` */
+    "types": [
+      "use-sync-external-store", // fixes the TS error
+      "node" // Node.js globals (fs, process, etc.)
+    ],
+    /* --------------------------------------------------------- Path Aliases */
+    "paths": {
+      "@/*": [
+        "./*"
+      ]
+    },
+    /* -------------------------------------------------- IDE / Next.js plugin */
     "plugins": [
       {
         "name": "next"
       }
-    ],
-    "paths": {
-      "@/*": ["./*"]
-    }
+    ]
   },
-  "include": ["next-env.d.ts", "**/*.ts", "**/*.tsx", ".next/types/**/*.ts"],
-  "exclude": ["node_modules"]}
+  /* ---------------------------------------------------------- File Globs */
+  "include": [
+    "next-env.d.ts",
+    "**/*.ts",
+    "**/*.tsx",
+    ".next/types/**/*.ts"
+  ],
+  "exclude": [
+    "node_modules"
+  ]
+}
